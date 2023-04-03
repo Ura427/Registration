@@ -48,9 +48,63 @@ namespace Login_in.Controllers
             {
                 _usersDbContext.Users.Add(user);
                 _usersDbContext.SaveChanges();
+                TempData["success"] = "Sighned up successfully";
                 return RedirectToAction("Index", "Home");
             }
 
+            return View(user);
+        }
+
+
+
+
+
+
+
+
+        public IActionResult LogIn()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult LogIn(User user)
+        {
+            if (user.UserName == null)
+            {
+                ModelState.AddModelError("UserName", "Username field is required");
+            }
+
+            if (user.Email == null)
+            {
+                ModelState.AddModelError("Email", "Email field is required");
+            }
+            if (ModelState.IsValid)
+            {
+                if (!_usersDbContext.Users.Any(u => u.Email == user.Email))
+                {
+                    ModelState.AddModelError("Email", "This email is not registered");
+                }
+
+                if (!_usersDbContext.Users.Any(u => u.UserName == user.UserName))
+                {
+                    ModelState.AddModelError("UserName", "This username doesn't exist");
+                }
+                if (ModelState.IsValid)
+                {
+                    if (!(_usersDbContext.Users.FirstOrDefault(u => u.UserName == user.UserName).Email == user.Email))
+                    {
+                        ModelState.AddModelError("Custom", "Invalid username or email");
+                    }
+
+                    if (ModelState.IsValid)
+                    {
+                        TempData["success"] = "Logged in successfully";
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+            }
+           
             return View(user);
         }
     }
