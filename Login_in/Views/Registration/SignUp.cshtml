@@ -9,12 +9,9 @@
     </div>
     <div>
          <label asp-for="Email"></label>
-        <input asp-for="Email" class="form-control" />
+        <input asp-for="Email" class="form-control" type="email"/>
         <span asp-validation-for="Email" class="text-danger"></span>
-        @if (string.IsNullOrEmpty(Model.Email))
-        {
-            <p class="text-danger">Please enter an email address.</p>
-        }
+       
 
     </div>
    
