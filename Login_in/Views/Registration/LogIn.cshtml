@@ -1,4 +1,5 @@
-﻿@model User
+﻿@*@model User*@
+@model LogInDto
 
 <form method="post">
     <div  class="text-danger" asp-validation-summary="All" ></div>
@@ -7,12 +8,18 @@
         <input asp-for="UserName" class="form-control" />
         <span asp-validation-for="UserName" class="text-danger"></span>
     </div>
-    <div>
+@*    <div>
          <label asp-for="Email"></label>
         <input asp-for="Email" class="form-control" type="email"/>
         <span asp-validation-for="Email" class="text-danger"></span>
        
 
+    </div>*@
+
+     <div>
+         <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" type="password"/>
+        <span asp-validation-for="Password" class="text-danger"></span>
     </div>
    
     <div class="text-center">
