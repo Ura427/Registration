@@ -15,7 +15,11 @@
             <th>Email</th>
             <th>Password</th>
             <th>isAdmin</th>
-            <th></th>
+            @if(Login_in.Controllers.RegistrationController.admin == true)
+            {
+                <th></th>
+            }
+            
              
         </tr>
     </thead>
@@ -28,12 +32,17 @@
                 <td>@user.Email</td>
                 <td>@user.Password</td>
                 <td>@user.isAdmin</td>
-                <td class="text-center">
+                
+                @if(Login_in.Controllers.RegistrationController.admin == true)
+                {
+                    <td class="text-center">
                     <div class="w-75 btn-group" role="group">
                          <a class="btn btn-primary" asp-controller="Registration" asp-action="Edit" asp-route-id="@user.Id"><i class="bi bi-pencil-square"></i>Edit</a> 
                          <a class="btn btn-secondary w-auto" asp-controller="Registration" asp-action="Delete" asp-route-id="@user.Id"><i class="bi bi-trash"></i>Delete</a>
                     </div>
-                </td>
+                    </td>
+                }
+               
             </tr>
         }
     </tbody>
