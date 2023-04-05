@@ -5,65 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Login_in</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    @*<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />*@
-    <link rel="stylesheet" href="~/css/bootstrapTheme.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @*<link rel="stylesheet" href="~/css/bootstrapTheme.css" asp-append-version="true" />*@
     <link rel="stylesheet" href="~/Login_in.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+
 </head>
 <body>
     <header>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-0 mb-3">
-        <div class="container-fluid p-0 m-0">
-            <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/null/external-log-outdoor-kiranshastry-lineal-kiranshastry.png"/>Log</a>
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img style="filter:invert(100%)" src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/null/external-log-outdoor-kiranshastry-lineal-kiranshastry.png"/></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
     
     
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="LogIn">Log in</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="SignUp">Sign up</a>
-                    </li>
+            <div class="collapse navbar-collapse" >
+                <ul class="navbar-nav me-auto position-relative" style="width:100%; font-size:20px">
+                    
+                       
+                        @if (Login_in.Controllers.RegistrationController.userIsLoggedIn == false)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-controller="Registration" asp-action="LogIn">Log in</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-controller="Registration" asp-action="SignUp">Sign up</a>
+                            </li>
+                            <li class="nav-item position-absolute" style="right:0">
+                                <a class="nav-link text-light" asp-controller="Registration" asp-action="LogIn"><i class="bi bi-person-circle"></i>Guest</a>
+                            </li> 
+                        }
+                            
+                        @if(Login_in.Controllers.RegistrationController.userIsLoggedIn == true)
+                        {
+                             <li class="nav-item">
+                                <a class="nav-link text-light" asp-controller="Registration" asp-action="LogOut"><i class="bi bi-box-arrow-left"></i>Log out</a>
+                             </li>
+                             <li class="nav-item position-absolute" style="right:0">
+                                <a class="nav-link text-light" asp-controller="Registration" asp-action="#">Hello, @Login_in.Controllers.RegistrationController.currentUser.UserName</a>
+                            </li> 
+                        }
+                       
                 </ul>
             </div>
         </div>
     </nav>
 
-
-
-
-
-
-
-
-
-
-       @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-               @* <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Login_in</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Login_in</a>
-                
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between align-content-end">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="LogIn">Log in</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="SignUp">Sign up</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>*@
+     
     </header>
     <div class="container">
         <main role="main" class="pb-3">
