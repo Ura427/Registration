@@ -25,15 +25,7 @@
     
             <div class="collapse navbar-collapse" >
                 <ul class="navbar-nav me-auto position-relative" style="width:100%; font-size:20px">
-                        @if(Login_in.Controllers.RegistrationController.userIsLoggedIn == true)
-                        {
-                             <li class="nav-item">
-                                <a class="nav-link text-light" asp-controller="Registration" asp-action="LogOut"><i class="bi bi-box-arrow-left"></i>Log out</a>
-                             </li>
-                             <li class="nav-item position-absolute" style="right:0">
-                                <a class="nav-link text-light" asp-controller="Registration" asp-action="#">Hello, @Login_in.Controllers.RegistrationController.currentUser.UserName</a>
-                            </li> 
-                        }
+                    
                        
                         @if (Login_in.Controllers.RegistrationController.userIsLoggedIn == false)
                         {
@@ -47,42 +39,23 @@
                                 <a class="nav-link text-light" asp-controller="Registration" asp-action="LogIn"><i class="bi bi-person-circle"></i>Guest</a>
                             </li> 
                         }
+                            
+                        @if(Login_in.Controllers.RegistrationController.userIsLoggedIn == true)
+                        {
+                             <li class="nav-item">
+                                <a class="nav-link text-light" asp-controller="Registration" asp-action="LogOut"><i class="bi bi-box-arrow-left"></i>Log out</a>
+                             </li>
+                             <li class="nav-item position-absolute" style="right:0">
+                                <a class="nav-link text-light" asp-controller="Registration" asp-action="#">Hello, @Login_in.Controllers.RegistrationController.currentUser.UserName</a>
+                            </li> 
+                        }
                        
                 </ul>
             </div>
         </div>
     </nav>
 
-
-
-
-
-
-
-
-
-
-       @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-               @* <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Login_in</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Login_in</a>
-                
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between align-content-end">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="LogIn">Log in</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="SignUp">Sign up</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>*@
+     
     </header>
     <div class="container">
         <main role="main" class="pb-3">
